@@ -29,6 +29,5 @@ func main()  {
 	http.Handle("/",http.FileServer(http.Dir("templates")))
 	http.HandleFunc("/cos", getWordHandler("co"))
 	http.HandleFunc("/mus", getWordHandler("mu"))
-	http.ListenAndServe(":80", nil)
-	println("run")
+	http.ListenAndServe(":8080", nil)
 }
