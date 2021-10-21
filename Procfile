@@ -1,1 +1,1 @@
-web: comu-generator
+web: go run main.go
