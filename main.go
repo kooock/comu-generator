@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 )
 
 type Word struct {
@@ -26,8 +27,13 @@ func getWordHandler(wordType string) func(http.ResponseWriter, *http.Request){
 }
 
 func main()  {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // Default port if not specified
+	}
+
 	http.Handle("/",http.FileServer(http.Dir("templates")))
 	http.HandleFunc("/cos", getWordHandler("co"))
 	http.HandleFunc("/mus", getWordHandler("mu"))
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":" + port, nil)
 }
