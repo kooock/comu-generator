@@ -1,0 +1,53 @@
+.comu-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: xx-large;
+    margin: 100px auto;
+}
+
+.text {
+    margin: 10px auto;
+}
+
+.word-container {
+    display:inline-block;
+    width: auto;
+    border: 3px solid red;
+    text-align: center;
+}
+
+.text-in {
+    display: inline-block;
+    animation: textIn .5s ease;
+}
+
+.text-out {
+    display: inline-block;
+    animation: textOut .5s ease;
+}
+
+.describe-container {
+    display: none;
+    margin: 30px auto;
+    width: 50%;
+    min-width: 300px;
+}
+
+@keyframes textIn{
+    0%{
+        transform: translateY(0%);
+    }
+    100%{
+        transform: translateY(100%);
+    }
+}
+@keyframes textOut{
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0%);
+
+    }
+}
