@@ -1,19 +1,20 @@
 import http
 import json
+import requests
 
 from bs4 import BeautifulSoup
-import requests
 from jamo import h2j, j2hcj
+
 
 def parse_word(item):
     word = item.a.text.strip()
     word = word[1:] if check_validation(word) else None
-    word_desc = item.findAll(text=True, recursive=False)[1].strip().replace(':\n','')
+    word_desc = item.findAll(text=True, recursive=False)[1].strip().replace(':\n', '')
     word_desc = word_desc if word else None
     return {'word': word, 'desc': word_desc}
 
 def parse(url,pages):
-    for p in range(1,pages+1):
+    for p in range(1, pages+1):
         res = requests.get(url.format(p))
         assert res.status_code == http.HTTPStatus.OK
         html = res.text
@@ -21,8 +22,6 @@ def parse(url,pages):
         word_items = soup.select('div.larger > ul > li')
         for item in word_items:
             yield parse_word(item)
-
-
 
 def check_validation(word):
     for c in word:
@@ -40,7 +39,8 @@ mu_url = 'https://wordrow.kr/%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-%EB%A7%90/%EB%
 
 co_words = [w for w in parse(co_url,22) if w['word']]
 mu_words = [w for w in parse(mu_url,69) if w['word']]
+
 with open('assets/co.json','w') as f:
-    f.write(json.dumps(co_words,ensure_ascii=False,indent=4))
+    f.write(json.dumps(co_words, ensure_ascii=False, indent=4))
 with open('assets/mu.json','w') as f:
-    f.write(json.dumps(mu_words,ensure_ascii=False,indent=4))
+    f.write(json.dumps(mu_words, ensure_ascii=False, indent=4))
