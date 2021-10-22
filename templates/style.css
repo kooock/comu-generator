@@ -87,3 +87,29 @@ button:disabled {
 
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    .body {
+        background: #1f1b24
+    }
+
+    .text {
+        color: #e1e1e1
+    }
+
+    .describe-container {
+        display: none;
+        margin: 30px auto;
+        width: 50%;
+        min-width: 300px;
+        color: #a5a5a5
+    }
+
+    .origin-container {
+        color: #a5a5a5
+    }
+
+    .link {
+        color: #58a6ff
+    }
+}
