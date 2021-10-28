@@ -8,6 +8,7 @@ let coWord = document.getElementById("co-word");
 let muWord = document.getElementById("mu-word");
 let coDesc = document.getElementById("co-desc");
 let muDesc = document.getElementById("mu-desc");
+let coPostposition = document.getElementById("co-postposition")
 let animated = false;
 let indexCo = 0;
 let indexMu = 0;
@@ -32,6 +33,7 @@ const animateText = () => {
             muWord.innerText = "무" + mus[indexMu]["word"];
             coDesc.innerText = cos[indexCo]["desc"];
             muDesc.innerText = mus[indexMu]["desc"];
+            coPostposition.innerText = cos[indexCo]['postposition']
             co.classList.add("text-in")
             mu.classList.add("text-in")
             co.classList.remove("text-out")
