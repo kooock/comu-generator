@@ -16,6 +16,7 @@ let cachedCo = 0;
 let cachedMu = 0;
 let lenCo = 0;
 let lenMu = 0;
+let lastCo = "";
 let genButton = document.getElementById("gen-btn");
 
 const shuffle = (array) => array.sort(() => Math.random() - 0.5);
@@ -32,8 +33,13 @@ const animateText = () => {
             coWord.innerText = "코" + cos[indexCo]["word"];
             muWord.innerText = "무" + mus[indexMu]["word"];
             coDesc.innerText = cos[indexCo]["desc"];
-            muDesc.innerText = mus[indexMu]["desc"];
-            coPostposition.innerText = cos[indexCo]['postposition']
+​            muDesc.innerText = mus[indexMu]["desc"];
+            lastCo = cos[indexCo]["word"].charAt(cos[indexCo]["word"].length-1)
+​            if ((lastCo.charCodeAt() - "가".charCodeAt()) % 28 == 0 ){
+​                coPostposition.innerText = "랑"
+​            } else {
+​                coPostposition.innerText = "이랑"
+​            }
             co.classList.add("text-in")
             mu.classList.add("text-in")
             co.classList.remove("text-out")
